@@ -15,7 +15,17 @@ namespace TaskyShared
 
         public Task GetTask (string id)
         {
-            throw new NotImplementedException ("To Do: need to query couchbase for this task");
+            var doc = db.GetDocument (id);
+            var props = doc.UserProperties;
+
+            var task = new Task {
+                ID = id,
+                Name = props ["name"].ToString (),
+                Notes = props ["notes"].ToString (),
+                Done = (bool)props ["done"]
+            };
+
+            return task;
         }
 
         public IList<Task> GetTasks ()
