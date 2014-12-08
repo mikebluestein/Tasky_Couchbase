@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Couchbase.Lite;
 
-namespace Tasky.Core
+namespace TaskyShared
 {
     public class TaskManager
     {
@@ -11,6 +11,11 @@ namespace Tasky.Core
         public TaskManager ()
         {
             db = Manager.SharedInstance.GetDatabase ("tasky");
+        }
+
+        public Task GetTask (string id)
+        {
+            throw new NotImplementedException ("To Do: need to query couchbase for this task");
         }
 
         public IList<Task> GetTasks ()

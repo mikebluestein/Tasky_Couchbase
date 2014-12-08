@@ -1,7 +1,7 @@
 using System;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using Tasky.Core;
+using TaskyShared;
 using System.Collections.Generic;
 using System.Linq;
 

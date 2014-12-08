@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tasky.Core
+namespace TaskyShared
 {
     public class Task
     {

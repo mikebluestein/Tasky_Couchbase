@@ -1,6 +1,6 @@
 using System;
 using MonoTouch.UIKit;
-using Tasky.Core;
+using TaskyShared;
 
 namespace Tasky
 {
