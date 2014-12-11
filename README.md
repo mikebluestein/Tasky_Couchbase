@@ -9,7 +9,7 @@ The solution and project structure in the Solution Pad shows all the files in th
 
 If you cannot see the Solution Pad, choose View → Pads → Solution from the menu.
 
-[solution pad]
+![solution pad](/images/solutionpad.png)
 
 Check that the Debug configuration is selected in the toolbar and choose Run → Debug from the menu or press Command + Return (or the 'play' button) to start debugging with the iOS Simulator:
 
