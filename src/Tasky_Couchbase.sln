@@ -33,6 +33,6 @@ Global
 		{9CAFBA9D-40F7-464A-8E2A-1DAE969B3C3C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TaskyAndroid\TaskyAndroid.csproj
+		StartupItem = TaskyiOS\Tasky.csproj
 	EndGlobalSection
 EndGlobal
