@@ -271,18 +271,18 @@ Displaying the Done checkbox control is only half of the data binding job - we m
 The following changes are required to hook up the checkbox to the business object:
 
 - Define a new field in the class:
-
-    		CheckBox doneCheckbox;
-      
+```
+CheckBox doneCheckbox;
+```
 - Find the checkbox control and set its value in the OnCreate method:
-
-    		doneCheckbox = FindViewById<CheckBox>(Resource.Id.chkDone);
-    		doneCheckbox.Checked = task.Done;
-    
+```
+doneCheckbox = FindViewById<CheckBox>(Resource.Id.chkDone);
+doneCheckbox.Checked = task.Done;
+```
 - Retrieve the value before persisting in the Save method:
-
-   		task.Done = doneCheckbox.Checked;
-
+```
+task.Done = doneCheckbox.Checked;
+```
 The updated task business object is then saved to the database via the Business Layer’s TaskManager class. This completes the changes to the Task Details screen - it will now display and save the new property we added to our business object.
 
 #####Alter the Home screen so that the Done status is displayed in the list
