@@ -64,8 +64,8 @@ namespace TaskyAndroid
 			// aapt resource value: 0x7f050000
 			public const int AddButton = 2131034112;
 			
-			// aapt resource value: 0x7f050008
-			public const int CancelDeleteButton = 2131034120;
+			// aapt resource value: 0x7f050009
+			public const int CancelDeleteButton = 2131034121;
 			
 			// aapt resource value: 0x7f050003
 			public const int NameLabel = 2131034115;
@@ -79,8 +79,8 @@ namespace TaskyAndroid
 			// aapt resource value: 0x7f050006
 			public const int NotesText = 2131034118;
 			
-			// aapt resource value: 0x7f050007
-			public const int SaveButton = 2131034119;
+			// aapt resource value: 0x7f050008
+			public const int SaveButton = 2131034120;
 			
 			// aapt resource value: 0x7f050002
 			public const int TaskDetailsHeader = 2131034114;
@@ -88,8 +88,11 @@ namespace TaskyAndroid
 			// aapt resource value: 0x7f050001
 			public const int TaskList = 2131034113;
 			
-			// aapt resource value: 0x7f050009
-			public const int lstItemTask = 2131034121;
+			// aapt resource value: 0x7f050007
+			public const int chkDone = 2131034119;
+			
+			// aapt resource value: 0x7f05000a
+			public const int lstItemTask = 2131034122;
 			
 			static Id()
 			{

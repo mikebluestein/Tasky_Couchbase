@@ -16,6 +16,7 @@ namespace TaskyAndroid
         EditText notesTextEdit;
         EditText nameTextEdit;
         Button saveButton;
+        CheckBox doneCheckbox;
 
         readonly TaskManager taskMgr = new TaskManager ();
 
@@ -29,6 +30,7 @@ namespace TaskyAndroid
             }
 			
             SetContentView (Resource.Layout.TaskDetails);
+
             nameTextEdit = FindViewById<EditText> (Resource.Id.NameText);
             notesTextEdit = FindViewById<EditText> (Resource.Id.NotesText);
             saveButton = FindViewById<Button> (Resource.Id.SaveButton);
@@ -40,9 +42,15 @@ namespace TaskyAndroid
             nameTextEdit.Text = task.Name; 
             notesTextEdit.Text = task.Notes;
 
+            doneCheckbox = FindViewById<CheckBox>(Resource.Id.chkDone);
+            doneCheckbox.Checked = task.Done;
+
             // button clicks 
             cancelDeleteButton.Click += (sender, e) => CancelDelete ();
-            saveButton.Click += (sender, e) => Save ();
+            saveButton.Click += (sender, e) => {
+                task.Done = doneCheckbox.Checked;
+                Save ();
+            };
         }
 
         void Save ()

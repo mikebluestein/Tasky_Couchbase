@@ -9,7 +9,7 @@ using TaskyAndroid;
 namespace TaskyAndroid {
 
 	[Activity (Label = "Tasky", MainLauncher = true, Icon="@drawable/icon")]			
-	public class HomeScreen : Activity {
+	public class Home : Activity {
 		TaskListAdapter taskList;
 		IList<Task> tasks;
 		Button addTaskButton;

@@ -203,11 +203,6 @@ As it sits, Tasky lacks a basic feature of any decent task application: the abil
 1. Implement a new property on the Task object called Done.
 2. Add a mechanism in the UI to allow users to mark a task as completed.
 3. Change the home screen to display whether a task is completed.
-4. We’re also going to spruce up the design of the application a bit by modifying the navigation bar style. 
-
-After we've made all of these changes, here is how Tasky will look:
-
-[tasky final]
 
 #####Implement a new property on the Task class
 
@@ -271,7 +266,7 @@ The Task Details screen will now render a checkbox under the Notes input.
 
 #####Sync changes made in the UI back to the business object
 
-Displaying the Done checkbox control is only half of the data binding job - we must also load the current task’s Done status to set the control, and save the value if it changes. The Task Details Activity subclass is defined in the TaskDetailsScreen.cs file in the Screens folder.
+Displaying the Done checkbox control is only half of the data binding job - we must also load the current task’s Done status to set the control, and save the value if it changes. The Task Details Activity subclass is defined in the TaskDetails.cs file.
 
 The following changes are required to hook up the checkbox to the business object:
 
@@ -294,7 +289,7 @@ The updated task business object is then saved to the database via the Business 
 
 The final step is to display the completion status of each task on the home screen.
 
-Each row in the task list is rendered via calls to the GetView method of TaskListAdapter.cs file in the Adapters folder. We need to alter the code to use a CheckedTextView and then set the Checked property. To do this replace the custom TaskListItem layout with the SimpleListItemCheck layout:
+Each row in the task list is rendered via calls to the GetView method of the TaskListAdapter class. We need to alter the code to use a CheckedTextView and then set the Checked property. To do this replace the custom TaskListItem layout with the SimpleListItemCheck layout:
 
 	var view = (convertView ??
 	    context.LayoutInflater.Inflate(
@@ -309,26 +304,6 @@ As we have changed the layout, delete the code describing the old Task List and 
 	
 The application now looks like this – the task completion status is visible in the list and can be marked as Done on the Task Details screen using the checkbox control:
 
-[task details]
+![task done](/images/taskdone_xap.png)
 
-#####Styling the app's appearance
-
-So now Tasky is a bit more useful, but let’s spice it up a bit by modifying the style of the application bar. Let’s change its color to a nice blue.
-
-To do this, add the following code to the HomeScreen.cs and TaskDetailsScreen.cs files in the OnCreate method, make sure that it goes after the SetContentView method:
-
-	View titleView = Window.FindViewById(Android.Resource.Id.Title);
-	if (titleView != null) {
-	    IViewParent parent = titleView.Parent;
-	    
-	    if (parent != null && (parent is View)) {
-		    View parentView = (View)parent;
-		    parentView.SetBackgroundColor(Color.Rgb(0x26, 0x75 ,0xFF)); //38, 117 ,255
-		}
-	}
-    
-The Android.Views namespace will need to be included in this file, you can easily add it by right-clicking on the code and resolve using Android.Views
-
-There are lots more styling changes you can make to an Android application, including hiding the application bar altogether and replacing it with your own custom view. Now the user interface looks like this:
-
-[tasky final]
+We've now created our first application in Xamarin.Android using Couchbase Lite. We've seen Xamarin Studio and we built and tested an application in the emulator.
