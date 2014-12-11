@@ -41,12 +41,8 @@ namespace TaskyAndroid
             notesTextEdit.Text = task.Notes;
 
             // button clicks 
-            cancelDeleteButton.Click += (sender, e) => {
-                CancelDelete ();
-            };
-            saveButton.Click += (sender, e) => {
-                Save ();
-            };
+            cancelDeleteButton.Click += (sender, e) => CancelDelete ();
+            saveButton.Click += (sender, e) => Save ();
         }
 
         void Save ()
