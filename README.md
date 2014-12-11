@@ -13,7 +13,7 @@ If you cannot see the Solution Pad, choose View → Pads → Solution from the m
 
 Check that the Debug configuration is selected in the toolbar and choose Run → Debug from the menu or press Command + Return (or the 'play' button) to start debugging with the iOS Simulator:
 
-[app in sim]
+![simulator](/images/taskysim.png)
 
 The app looks pretty empty to start with – press the plus button and add a few tasks to see how it works.
 
@@ -31,7 +31,7 @@ A shared project that contains platform-independent code. This code is shared be
 
 The architecture and project structure of the Tasky application is shown in the following diagram:
 
-[architecture diagram]
+![architecture](/images/architecture.png)
 
 - User Interface - The screens, controls and data presentation code. In Xamarin.iOS these classes are wrappers around the iOS CocoaTouch frameworks. The user interface that you build looks, feels and performs like a native Objective-C application.
 - App Layer - Custom classes to bind the business layer to the user interface, typically requiring platform specific features.
@@ -51,7 +51,7 @@ As it sits, Tasky lacks a basic feature of any decent task application: the abil
 
 4. Allow deleting a task.
 
-[task detail]
+![task detail](/images/detail.png)
 
 #####Implement a new property on the Task class
 
@@ -92,7 +92,7 @@ Tasky uses the Xamarin iOS designer to create the user interface, contained in t
 
 We can drag and drop a Switch and Label to change the Done property, and a Button to delete a task, giving each control a Name in Property Pad.
 
-[storyboard]
+![storyboard](/images/storyboard.png)
 
 #####Sync changes made in the user interface back to the business object
 
@@ -143,7 +143,7 @@ We can do this by simply updating the cell's Accessory in the DataSource's GetCe
 
 	cell.Accessory = task.Done ? UITableViewCellAccessory.Checkmark : UITableViewCellAccessory.None;
 
-[cell accessory]
+![cellaccessory](/images/cellaccessory.png)
 
 We've now created our first application in Xamarin.iOS using Couchbase Lite. We've seen Xamarin Studio and we built and tested an application in the simulator.
 
