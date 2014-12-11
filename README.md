@@ -106,8 +106,22 @@ First let's implement delete. If we double-click on the button, an event handler
 	
 	    NavigationController.PopViewControllerAnimated (true);
     }
+    
+We also want users to be able to swipe to delete task in the UITableView of the HomeScreenController. We can accomplish this by implementing CommitEditingStyle as follows:
 
-To persist the Done property, we simply access the value from the Switch by the name we gave the control in the Property Pad and set the value of the Task object:
+	public override void CommitEditingStyle (UITableView tableView,
+	    UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
+	{
+	    if (editingStyle == UITableViewCellEditingStyle.Delete) {
+	        taskMgr.DeleteTask (tasks [indexPath.Row]);
+	        tasks.RemoveAt (indexPath.Row);
+	        
+	        controller.TableView.DeleteRows (
+		        new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);   
+	    }
+	}
+
+Back in the TaskDetailController, to persist the Done property, we simply access the value from the Switch by the name we gave the control in the Property Pad and set the value of the Task object:
 
     partial void SaveButton_TouchUpInside (UIButton sender)
     {
