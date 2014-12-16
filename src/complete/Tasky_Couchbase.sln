@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasky", "TaskyiOS\Tasky.csproj", "{08FAE550-E302-4022-A871-17E0462E99F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskyIOS", "TaskyiOS\TaskyIOS.csproj", "{08FAE550-E302-4022-A871-17E0462E99F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskyAndroid", "TaskyAndroid\TaskyAndroid.csproj", "{9CAFBA9D-40F7-464A-8E2A-1DAE969B3C3C}"
 EndProject
@@ -33,6 +33,6 @@ Global
 		{9CAFBA9D-40F7-464A-8E2A-1DAE969B3C3C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TaskyAndroid\TaskyAndroid.csproj
+		StartupItem = TaskyiOS\TaskyIOS.csproj
 	EndGlobalSection
 EndGlobal
