@@ -1,5 +1,7 @@
 #Xamarin CouchbaseLite Workshop
 
+NOTE: The **src** folder contains a **workshop_start** folder containing a solution to serve as a starting point for the workshop. There is also a **complete** folder containing the finished solution.
+
 ##Xamarin.iOS
 ###Running the Sample Application
 
