@@ -30,7 +30,7 @@ To initialize the database now we simply give the database a name. Let's look at
 
 ( [http://developer.couchbase.com/mobile/develop/references/couchbase-lite/couchbase-lite/manager/manager/index.html#database-getdatabasestring-name](http://developer.couchbase.com/mobile/develop/references/couchbase-lite/couchbase-lite/manager/manager/index.html#database-getdatabasestring-name)) The method 'getDatabase' will return the database that we provide and if the database does not exist, it will be created for us with the name that we provided.  So let's call the method and pass in a database name called "tasky"
 
-- db = Manager.SharedInstance.GetDatabase("tasky"); 
+    db = Manager.SharedInstance.GetDatabase ("tasky"); 
 
 Congrats you have now just created a database! The database name is called 'tasky' or whatever name you provided. 
 
@@ -44,8 +44,6 @@ Congrats you have now just created a database! The database name is called 'task
 4.  **Create a GetTask method**
 
 We already created the GetTask method for you in your code but it is missing a few things. The parameter being passed into the GetTask method is a string value that represents the document id for a particular Task. Each Task/Item created by the end user in the app will have a unique document ID in your database. So when a Task is created, a document is created. You can think of a Document as representing a Task here. 
-
-\*\*
 
     public Task GetTask (stringid)
 
