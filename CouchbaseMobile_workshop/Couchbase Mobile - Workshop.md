@@ -6,7 +6,7 @@ This way you will have the available classes and methods that we will need to us
 
 \*\*What you should have on top is:
 
-usingCouchbase.Lite;
+    using Couchbase.Lite;
 
 2.  **Declare a 'Database' variable**
 
@@ -14,7 +14,7 @@ We will now create a database variable. This is not the name of our database but
 
 \*\*What you should have is:
 
-Databasedb;
+    Database db;
 
 3.  **Initialize the database**
 
@@ -24,7 +24,7 @@ Our third step is to initialize the database inside our constructor. Let's look 
 
 This is a property belonging to the Manger class so in code what we will write is:
 
-- db = Manager.SharedInstance
+    db = Manager.SharedInstance
 
 To initialize the database now we simply give the database a name. Let's look at the available methods that would allow us to create a database.
 
@@ -36,18 +36,10 @@ Congrats you have now just created a database! The database name is called 'task
 
 \*\*What you should have in your constructor is:
 
-publicTaskManager()  
-{  
-db=Manager.SharedInstance.GetDatabase("tasky");  
-}
-
-
-
-
-
-
-
-
+    publicTaskManager()  
+    {  
+      db=Manager.SharedInstance.GetDatabase("tasky");  
+    }
 
 4.  **Create a GetTask method**
 
@@ -55,7 +47,7 @@ We already created the GetTask method for you in your code but it is missing a f
 
 \*\*
 
-publicTaskGetTask(stringid)
+    public Task GetTask (stringid)
 
 5.  **Obtain the document of interest**
 
@@ -67,7 +59,7 @@ This method belongs to the database class so we will use the database instance t
 
 \*\*What the GetDocument code looks like
 
-vardoc=db.GetDocument(id);
+    var doc = db.GetDocument (id);
 
 6.  **Obtain the document properties**
 
@@ -77,7 +69,7 @@ Now you will obtain the properties of the document. The API that we will be usin
 
 \*\*What the UserProperties code looks like
 
-varprops=doc.UserProperties;
+    var props = doc.UserProperties;
 
 _NOTE: We have already created a Task object for you that include the ID, Name, and Notes to be referenced to variables within the object._
 
@@ -87,29 +79,22 @@ The GetTask Function is a type 'Task' so we must return a Task object.
 
 \*\*What you return in the GetTask function
 
-returntask;
-
-
-
-
+    return task;
 
 \*\*What you should have in your final GetTask method is:
 
-publicTaskGetTask(stringid)  
-{  
-vardoc=db.GetDocument(id);  
-varprops=doc.UserProperties;  
-  
-  
-vartask=newTask{  
-ID=id,  
-Name=props["name"].ToString(),  
-Notes=props["notes"].ToString(),  
-};  
-  
-  
-returntask;  
-}
+    public Task GetTask (stringid)  
+    {  
+      var doc = db.GetDocument (id);  
+      var props = doc.UserProperties;  
+        
+      var task = new Task{  
+        ID = id,  
+        Name = props["name"].ToString (),  
+        Notes = props["notes"].ToString (),  
+      };  
+      returntask;  
+    }
 
 **8. Obtain all the documents in the database **
 
@@ -119,7 +104,7 @@ returntask;
 
 \*\*Your code should look like
 
-varquery=db.CreateAllDocumentsQuery();
+    var query = db.CreateAllDocumentsQuery ();
 
 **9. Return the Document ID**
 
@@ -133,7 +118,7 @@ Obtain the ID by calling on the 'DocumentID' property on a particular row.
 
 \*\*Your code should look like
 
-ID=row.DocumentId,
+    ID = row.DocumentId,
 
 **10. Return the value in 'notes' key**
 
@@ -141,7 +126,7 @@ From the row instance, obtain the 'notes' key with the 'UserProperties' from wit
 
 \*\* Your code should look like
 
-Notes=row.Document.UserProperties["notes"].ToString(),
+    Notes = row.Document.UserProperties["notes"].ToString (),
 
 **11. Create Document**
 
@@ -149,7 +134,7 @@ In the 'SaveTask' method, you will first check if a particular Task object exist
 
 \*\* Your code should look like
 
-doc=db.CreateDocument();
+    doc = db.CreateDocument ();
 
 **12. Add Task Item to Document**
 
@@ -157,7 +142,7 @@ With a new Task available to save and put into the document, you will call the '
 
 \*\*Your code should look like
 
-doc.PutProperties(item.ToDictionary());
+    doc.PutProperties (item.ToDictionary ());
 
 **13. Retrieve Document**
 
@@ -165,7 +150,7 @@ If in the case the Task object's ID value is not null, you will first retrieve t
 
 \*\*Your code should look like
 
-doc=db.GetDocument(item.ID);
+    doc = db.GetDocument (item.ID);
 
 **14. Update Document**
 
@@ -173,43 +158,42 @@ Copy and paste in the code that will update the document with the new key-values
 
 \*\* Your code should look like
 
-doc.Update(newRevision=>{  
-varprops=newRevision.Properties;  
-props["name"]=item.Name;  
-props["notes"]=item.Notes;  
-Console.WriteLine("Youareaccessingdatabasenamed"+db.Name);  
-Console.WriteLine("Thecurrentrevision"+item.ID);  
-returntrue;  
-});
+    doc.Update(newRevision => {  
+      var props = new Revision.Properties;  
+      props["name"] = item.Name;  
+      props["notes"] = item.Notes;  
+      Console.WriteLine ("You are accessing database named "+ db.Name);  
+      Console.WriteLine ("The current revision " + item.ID);  
+      return true;  
+    });
 
 
 
 \*\*What you should have at the end for the SaveTask method
 
-publicvoidSaveTask(Taskitem)  
-{  
-Documentdoc;  
-  
-  
-if(item.ID==null){  
-doc=db.CreateDocument();  
-doc.PutProperties(item.ToDictionary());  
-item.ID=doc.Id;  
-Console.WriteLine("YouhavecreatedanewDocument:"+doc);  
-Console.WriteLine("TheDocumentIDis:"+item.ID);  
-}else{  
-doc=db.GetDocument(item.ID);  
-Console.WriteLine("Thepreviousrevision"+item.ID);  
-doc.Update(newRevision=>{  
-varprops=newRevision.Properties;  
-props["name"]=item.Name;  
-props["notes"]=item.Notes;  
-Console.WriteLine("Youareaccessingdatabasenamed"+db.Name);  
-Console.WriteLine("Thecurrentrevision"+item.ID);  
-returntrue;  
-});  
-}  
-}
+    public void SaveTask (Taskitem)  
+    {  
+      Document doc;
+      
+      if(item.ID==null){  
+        doc = db.CreateDocument ();  
+        doc.PutProperties(item.ToDictionary ());  
+        item.ID = doc.Id;  
+        Console.WriteLine ("You have created a new Document: " + doc);  
+        Console.WriteLine ("The Document ID is: " + item.ID);  
+      }else{  
+        doc = db.GetDocument (item.ID);  
+        Console.WriteLine ("The previous revision " + item.ID);  
+        doc.Update (newRevision => {  
+          var props= newRevision.Properties;  
+          props["name"] = item.Name;  
+          props["notes"] = item.Notes;  
+          Console.WriteLine ("You are accessing database named " + db.Name);  
+          Console.WriteLine ("The current revision " + item.ID);  
+          return true;  
+        });  
+      }  
+    }
 
 **15. Delete Document**
 
@@ -217,5 +201,4 @@ To delete a document, you will first obtain the document you wish to delete from
 
 \*\*Your Code should look like
 
-doc.Delete();
-
+    doc.Delete ();
