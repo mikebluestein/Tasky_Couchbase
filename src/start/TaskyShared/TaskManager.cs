@@ -1,72 +1,77 @@
+//workshop version of TaskManager.cs
+
 using System;
 using System.Collections.Generic;
-using Couchbase.Lite;
+//1.  Add the Couchbase Lite using statement  
 
-namespace TaskyShared
+namespace TaskyShared  
 {
     public class TaskManager
     {
-        Database db;
+        //2.  Declare a 'Database' variable 
 
         public TaskManager ()
         {
-            db = Manager.SharedInstance.GetDatabase ("tasky");
+            //3. Initialize the database   
         }
 
+        //4.  Create a GetTask method
         public Task GetTask (string id)
         {
-            var doc = db.GetDocument (id);
-            var props = doc.UserProperties;
+            var doc = //5.  Obtain the document of interest 
+            var props = //6. Obtain the document properties 
 
             var task = new Task {
                 ID = id,
                 Name = props ["name"].ToString (),
-                Notes = props ["notes"].ToString ()
+                Notes = props ["notes"].ToString (),
             };
 
-            return task;
+            //7. Return the object of interest  
         }
 
+     
         public IList<Task> GetTasks ()
         {
-            var query = db.CreateAllDocumentsQuery ();
+            var query = //8.  Obtain all the documents in the database  
             var results = query.Run ();
             var tasks = new List<Task> ();
 
             foreach (var row in results) {
                 var task = new Task {
-                    ID = row.DocumentId,
+                    //9.  Return the Document ID 
                     Name = row.Document.UserProperties ["name"].ToString (),
-                    Notes = row.Document.UserProperties ["notes"].ToString ()
+                    //10.  Return the value in 'notes' 
                 };
                 tasks.Add (task);
             }
             return tasks;
         }
 
+   
         public void SaveTask (Task item)
         {
             Document doc;
 
             if (item.ID == null) {
-                doc = db.CreateDocument ();
-                doc.PutProperties (item.ToDictionary ());
+                doc = //11.  Create Document 
+                //12. Add Task Item to Document 
                 item.ID = doc.Id;
+				Console.WriteLine("You have created a new Document: " + doc);
+				Console.WriteLine("The Document ID is: " + item.ID);
             } else {
-                doc = db.GetDocument (item.ID);
-                doc.Update (newRevision => {
-                    var props = newRevision.Properties;
-                    props ["name"] = item.Name;
-                    props ["notes"] = item.Notes;
-                    return true;
-                });
+                doc = //13. Retrieve Document 
+				Console.WriteLine("The previous revision " + item.ID);
+                //14.  Update Document 
+
             }
         }
 
         public void DeleteTask (Task task)
         {
             var doc = db.GetDocument (task.ID);
-            doc.Delete ();
+            //15.  Delete Document 
+			Console.WriteLine("You have deleted: " + doc.Id);
         }
     }
 }
