@@ -19,7 +19,7 @@ The app looks pretty empty to start with – press the plus button and add a few
 
 Before looking at the code more closely, let's revisit the solution and application architecture. There are two projects, which help facilitate a cross-platform solution when combined with Xamarin.Android:
 
-###Tasky
+###TaskyIOS
 
 An iOS application project containing the user-interface and application layer for iPhones & iPads.
 
