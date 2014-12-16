@@ -1,6 +1,6 @@
 
 
-1.  **Add the Couchbase Lite using statement** 
+**1. Add the Couchbase Lite using statement** 
 
 This way you will have the available classes and methods that we will need to use.
 
@@ -8,7 +8,7 @@ This way you will have the available classes and methods that we will need to us
 
     using Couchbase.Lite;
 
-2.  **Declare a 'Database' variable**
+**2. Declare a 'Database' variable**
 
 We will now create a database variable. This is not the name of our database but how we will reference our database in code throughout our project. 
 
@@ -16,7 +16,7 @@ We will now create a database variable. This is not the name of our database but
 
     Database db;
 
-3.  **Initialize the database**
+**3. Initialize the database**
 
 Our third step is to initialize the database inside our constructor. Let's look at the API Reference and obtain a 'SharedInstance' This is a shared and pre-process instance of our Manager
 
@@ -41,13 +41,13 @@ Congrats you have now just created a database! The database name is called 'task
       db=Manager.SharedInstance.GetDatabase("tasky");  
     }
 
-4.  **Create a GetTask method**
+**4. Create a GetTask method**
 
 We already created the GetTask method for you in your code but it is missing a few things. The parameter being passed into the GetTask method is a string value that represents the document id for a particular Task. Each Task/Item created by the end user in the app will have a unique document ID in your database. So when a Task is created, a document is created. You can think of a Document as representing a Task here. 
 
     public Task GetTask (stringid)
 
-5.  **Obtain the document of interest**
+**5. Obtain the document of interest**
 
 In order to obtain the document of interest from the 'String Id' that is passed into the method, you will first create a document variable in code to capture the document of interest. Looking at the API Reference again, there is 'GetDocument' method that takes a String value that will either create or return the document of interest.
 
@@ -59,7 +59,7 @@ This method belongs to the database class so we will use the database instance t
 
     var doc = db.GetDocument (id);
 
-6.  **Obtain the document properties**
+**6. Obtain the document properties**
 
 Now you will obtain the properties of the document. The API that we will be using is 'UserProperties' and gets the properties of the current Revision of the Document.
 
@@ -71,7 +71,7 @@ Now you will obtain the properties of the document. The API that we will be usin
 
 _NOTE: We have already created a Task object for you that include the ID, Name, and Notes to be referenced to variables within the object._
 
-7.  **Return the object of interest** 
+**7. Return the object of interest** 
 
 The GetTask Function is a type 'Task' so we must return a Task object.
 
@@ -94,7 +94,7 @@ The GetTask Function is a type 'Task' so we must return a Task object.
       returntask;  
     }
 
-**8. Obtain all the documents in the database **
+**8. Obtain all the documents in the database**
 
 'CreateAllDocumentsQuery' method will create a Query that matches all Documents in the Database.
 
