@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-//1.  Import the Couchbase Lite package 
+//1.  Add the Couchbase Lite using statement  
 
 namespace TaskyShared  
 {
@@ -25,13 +25,12 @@ namespace TaskyShared
                 ID = id,
                 Name = props ["name"].ToString (),
                 Notes = props ["notes"].ToString (),
-                Done = (bool)props ["done"]
             };
 
             //7. Return the object of interest  
         }
 
-        //Section 2 - Retrieve 
+     
         public IList<Task> GetTasks ()
         {
             var query = //8.  Obtain all the documents in the database  
@@ -43,14 +42,13 @@ namespace TaskyShared
                     //9.  Return the Document ID 
                     Name = row.Document.UserProperties ["name"].ToString (),
                     //10.  Return the value in 'notes' 
-                    Done = (bool)row.Document.UserProperties ["done"]
                 };
                 tasks.Add (task);
             }
             return tasks;
         }
 
-        //Section 3 - Save
+   
         public void SaveTask (Task item)
         {
             Document doc;
