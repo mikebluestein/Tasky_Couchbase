@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using TaskyShared;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,7 +62,7 @@ namespace Tasky
                 tasks = taskMgr.GetTasks ().ToList ();
             }
 
-            public override int RowsInSection (UITableView tableview, int section)
+            public override nint RowsInSection (UITableView tableview, nint section)
             {
                 return tasks.Count;
             }

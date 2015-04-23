@@ -1,5 +1,5 @@
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 using TaskyShared;
 
 namespace Tasky
@@ -35,7 +35,7 @@ namespace Tasky
             CurrentTask.Done = taskDoneSwitch.On;
 
             taskMgr.SaveTask (CurrentTask);
-            NavigationController.PopViewControllerAnimated (true);
+            NavigationController.PopViewController (true);
         }
 
         partial void DeleteButton_TouchUpInside (UIButton sender)
@@ -44,7 +44,7 @@ namespace Tasky
                 taskMgr.DeleteTask (CurrentTask);
             }
 
-            NavigationController.PopViewControllerAnimated (true);
+            NavigationController.PopViewController (true);
         }
     }
 }
